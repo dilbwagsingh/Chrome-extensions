@@ -1,0 +1,13 @@
+{
+  "manifest_version": 2,
+  "name": "FancyTab",
+  "description": "Display a random picture everytime you open a new tab.",
+  "version": "1",
+  "author": "Dilbwag Singh",
+  "browser_action": {
+    "default_icon": "tab-icon.png",
+    "default_title": "Have a good day"
+  },
+  "chrome_url_overrides": { "newtab": "newtab.html" },
+  "permissions": ["activeTab"]
+}
