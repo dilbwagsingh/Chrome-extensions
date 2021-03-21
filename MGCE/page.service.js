@@ -9,6 +9,7 @@ class PageService {
   static getPages = () => {
     const promise = new Promise((resolve, reject) => {
       try {
+        /* Switched from chrome.storage.local to cloud storage across the same google account */
         chrome.storage.sync.get([PAGES_KEY], (result) => {
           if (chrome.runtime.lastError) reject(chrome.runtime.lastError);
 
