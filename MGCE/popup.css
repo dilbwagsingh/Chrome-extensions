@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@400;500&display=swap");
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  margin: 4px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 4px;
+  color: #29363e;
+  font-size: 18px;
+  align-items: center;
+  justify-content: center;
+  background: #6792a5;
+}
+
+h4 {
+  font-family: "Alegreya Sans", sans-serif;
+  font-weight: 700;
+}
+
+#dog {
+  border-radius: 50%;
+  width: 340px;
+  height: 340px;
+}
+
+ul {
+  list-style: none;
+  width: 100%;
+}
+
+li,
+a {
+  margin: 1px;
+  padding: 4px;
+  text-indent: -5px;
+  text-decoration: none;
+  font-family: "Alegreya Sans", sans-serif;
+  color: #1c1f20;
+}
+
+a:active {
+  background-color: #1c1f20;
+}
+
+a:visited {
+  background-color: #1c1f20;
+}
+
+a:hover {
+  color: white;
+  transition: all 0.4s ease;
+}
+
+ul li:nth-child(odd) {
+  background: #c0b0b7;
+}
+
+ul li:nth-child(even) {
+  background: #ddbbb9;
+}
+
+.btn {
+  position: relative;
+  display: block;
+  font-size: 17px;
+  font-family: "Alegreya Sans", sans-serif;
+  font-weight: 500;
+  text-decoration: none;
+  margin: 13px 0px;
+  border-radius: 3px;
+  padding: 7px 13px;
+  padding-left: 18px;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: 0.75s all ease;
+}
+.btn:hover {
+  cursor: pointer;
+  color: #d9cabd;
+}
+.btn::before {
+  background: #45383b;
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  transition: all 0.6s ease;
+}
+
+.btn1::before {
+  width: 0%;
+  height: 100%;
+}
+
+.btn1:hover::before {
+  width: 100%;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #929493;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #3f596f;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #484749;
+  /* background: #33526d; */
+}

@@ -1,0 +1,51 @@
+{
+  "manifest_version": 2,
+  "name": "Multipurpose Google-Chrome extension",
+  "version": "1.0.0",
+  "description": "This extension aims to do a lot of small tasks and increase accessibility and usability of google chrome",
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "64": "images/icon-64.png"
+    }
+  },
+  "permissions": ["tabs", "storage"],
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Alt+A"
+      }
+    },
+    "duplicate-tab": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+2",
+        "mac": "Command+Shift+2"
+      },
+      "description": "Duplicates the currently active tab because... why not?"
+    },
+    "bookmark-and-close": {
+      "suggested_key": {
+        "default": "Alt+W"
+      },
+      "description": "Bookmarks and then closes the current page"
+    },
+    "bookmark": {
+      "suggested_key": {
+        "default": "Alt+B"
+      },
+      "description": "Bookmarks the current page"
+    }
+  },
+  "background": {
+    "scripts": ["background.js", "util.js", "page.service.js"],
+    "persistent": false
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js", "util.js"],
+      "css": ["content.css"]
+    }
+  ],
+  "web_accessible_resources": ["./images/icon-48.png"]
+}

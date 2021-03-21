@@ -1,0 +1,15 @@
+.my-notification {
+  background-color: #6792a5;
+  border: 2px solid #3f596f;
+  border-radius: 5px;
+  font-size: 14px;
+  width: 270px;
+  color: #201618;
+  display: none;
+  z-index: 10000000; /* Small hack to display the notification above all elements */
+  padding: 4px;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  align-items: center;
+}
