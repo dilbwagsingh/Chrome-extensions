@@ -37,7 +37,7 @@
     }
   },
   "background": {
-    "scripts": ["background.js", "util.js", "page.service.js"],
+    "scripts": ["page.service.js", "background.js", "util.js"],
     "persistent": false
   },
   "content_scripts": [

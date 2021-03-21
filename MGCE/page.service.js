@@ -1,5 +1,5 @@
 /** @private */
-const PAGES_KEY = "pages";
+const PAGES_KEY = "pages"; /* Declaring variable for use later */
 
 /** Shared logic */
 class PageService {
@@ -9,7 +9,7 @@ class PageService {
   static getPages = () => {
     const promise = new Promise((resolve, reject) => {
       try {
-        chrome.storage.local.get([PAGES_KEY], (result) => {
+        chrome.storage.sync.get([PAGES_KEY], (result) => {
           if (chrome.runtime.lastError) reject(chrome.runtime.lastError);
 
           const researches = result.pages ?? [];
@@ -39,7 +39,8 @@ class PageService {
     }
     const promise = new Promise((resolve, reject) => {
       try {
-        chrome.storage.local.set({ [PAGES_KEY]: updatedPages }, () => {
+        chrome.storage.sync.set({ [PAGES_KEY]: updatedPages }, () => {
+          /* [Pages_KEY] is the Computed Property Name, introduced in ECMA 2015 */
           if (chrome.runtime.lastError) reject(chrome.runtime.lastError);
           resolve(updatedPages);
         });
@@ -54,7 +55,7 @@ class PageService {
   static clearPages = async () => {
     const promise = new Promise((resolve, reject) => {
       try {
-        chrome.storage.local.clear(() => {
+        chrome.storage.sync.clear(() => {
           if (chrome.runtime.lastError) reject(chrome.runtime.lastError);
 
           resolve();
