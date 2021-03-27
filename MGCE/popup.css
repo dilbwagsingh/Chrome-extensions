@@ -59,6 +59,7 @@ a:visited {
 
 a:hover {
   color: white;
+  cursor: pointer;
   transition: all 0.4s ease;
 }
 

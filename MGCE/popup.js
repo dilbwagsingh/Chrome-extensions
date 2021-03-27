@@ -12,6 +12,19 @@ const displayPages = async () => {
     pageLink.innerHTML = page.title;
     pageLink.href = page.url;
 
+    // Delete individual items from the list
+    const deleteBtn = document.createElement("a");
+    deleteBtn.innerHTML = "Delete";
+    deleteBtn.className = "del-btn";
+    deleteBtn.addEventListener(
+      "click",
+      function (event) {
+        PageService.clearPage(page.title);
+        // pageItem.parentNode.removeChild(pageItem);
+      },
+      false
+    );
+
     // Prevent the link from opening in the extension pop-up
     pageLink.onclick = (event) => {
       event.preventDefault();
@@ -20,6 +33,7 @@ const displayPages = async () => {
 
     // Displaying the added bookmark in the extension
     pageItem.appendChild(pageLink);
+    pageItem.appendChild(deleteBtn);
   });
 };
 
@@ -32,4 +46,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     await PageService.clearPages();
     await displayPages();
   };
+});
+
+// Add to list in real-time even when the popup window is open
+chrome.storage.sync.onChanged.addListener(async () => {
+  await displayPages();
 });
