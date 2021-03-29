@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@400;500&display=swap");
 
 *,
-*:before,
-*:after {
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -58,9 +58,10 @@ a:visited {
 }
 
 a:hover {
-  color: white;
+  /* color: black; */
+  font-weight: 500;
   cursor: pointer;
-  transition: all 0.4s ease;
+  /* transition: all 0.4s ease; */
 }
 
 ul li:nth-child(odd) {
@@ -88,10 +89,12 @@ ul li:nth-child(even) {
 }
 .btn:hover {
   cursor: pointer;
-  color: #d9cabd;
+  color: #6792a5;
 }
+
 .btn::before {
-  background: #45383b;
+  background: #362f31;
+  background: #262f37;
   content: "";
   position: absolute;
   top: 50%;
@@ -108,6 +111,29 @@ ul li:nth-child(even) {
 
 .btn1:hover::before {
   width: 100%;
+}
+
+.search__input {
+  width: 340px;
+  height: 35px;
+  margin: 10px 0px;
+  padding: 3px 10px;
+  border: none;
+  font-size: 21px;
+  font-family: "Alegreya Sans", sans-serif;
+  font-weight: 500;
+  color: #ccb8a9;
+  border-radius: 3px;
+  background: #262f37;
+  /* background: #172735; */
+}
+
+.search__input:focus {
+  outline: none;
+}
+
+.search__input::placeholder {
+  color: #6792a5;
 }
 
 /* width */
@@ -127,6 +153,5 @@ ul li:nth-child(even) {
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #484749;
-  /* background: #33526d; */
+  background: #262f37;
 }

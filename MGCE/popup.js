@@ -15,7 +15,8 @@ const displayPages = async () => {
 
     // Delete individual items from the list
     const deleteBtn = document.createElement("a");
-    deleteBtn.innerHTML = "Delete";
+    deleteBtn.innerHTML =
+      '<img src="./images/icon-delete.png" width=16px height=16px/>';
     deleteBtn.className = "del-btn";
     deleteBtn.addEventListener(
       "click",
@@ -40,14 +41,12 @@ const displayPages = async () => {
 
 const input = document.getElementById("input");
 input.addEventListener("keyup", () => {
-  // let input = document.getElementById("input").innerText().trim();
   let filter = input.value.trim().toUpperCase();
   let itemList = document
     .getElementById("page-list")
     .getElementsByTagName("li");
 
   for (let i = 0; i < itemList.length; i++) {
-    // let a = li[i].getElementsByTagName("a")[0];
     let txtValue = itemList[i].textContent || itemList[i].innerText;
     if (txtValue.toUpperCase().indexOf(filter) > -1) {
       itemList[i].style.display = "";
