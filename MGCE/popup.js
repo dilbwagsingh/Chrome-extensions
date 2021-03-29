@@ -1,5 +1,6 @@
 const displayPages = async () => {
   const visitedPages = await PageService.getPages();
+  visitedPages.reverse();
   const pageList = document.getElementById("page-list");
   pageList.innerHTML = "";
 
@@ -20,7 +21,6 @@ const displayPages = async () => {
       "click",
       function (event) {
         PageService.clearPage(page.title);
-        // pageItem.parentNode.removeChild(pageItem);
       },
       false
     );
@@ -34,8 +34,28 @@ const displayPages = async () => {
     // Displaying the added bookmark in the extension
     pageItem.appendChild(pageLink);
     pageItem.appendChild(deleteBtn);
+    pageList.appendChild(pageItem);
   });
 };
+
+const input = document.getElementById("input");
+input.addEventListener("keyup", () => {
+  // let input = document.getElementById("input").innerText().trim();
+  let filter = input.value.trim().toUpperCase();
+  let itemList = document
+    .getElementById("page-list")
+    .getElementsByTagName("li");
+
+  for (let i = 0; i < itemList.length; i++) {
+    // let a = li[i].getElementsByTagName("a")[0];
+    let txtValue = itemList[i].textContent || itemList[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      itemList[i].style.display = "";
+    } else {
+      itemList[i].style.display = "none";
+    }
+  }
+});
 
 document.addEventListener("DOMContentLoaded", async () => {
   // Display history.
