@@ -47,7 +47,8 @@ li {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  word-wrap: break-word;
+  gap: 15px;
+  border-radius: 3px;
 }
 
 li > div.link {
@@ -61,8 +62,8 @@ li > div.delete-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 13%;
-  max-width: 13%;
+  width: 11%;
+  max-width: 11%;
 }
 
 li,
@@ -105,7 +106,6 @@ li:nth-child(even) {
   margin: 10px 0px;
   border-radius: 3px;
   padding: 7px 13px;
-  padding-left: 18px;
   text-transform: uppercase;
   overflow: hidden;
   transition: 0.75s all ease;
