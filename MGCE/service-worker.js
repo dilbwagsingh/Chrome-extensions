@@ -11,11 +11,11 @@ chrome.runtime.onStartup.addListener((r) => {
 
 chrome.commands.onCommand.addListener(async (command) => {
   switch (command) {
-    case "duplicate-tab":
-      await duplicateTab();
+    case "open-grouped-tab":
+      await openGroupedTab();
       break;
-    case "bookmark-and-close":
-      await bookmarkAndClose();
+    case "create-new-group":
+      await createNewGroup();
       break;
     case "bookmark":
       await notifyAndBookmark();
@@ -28,10 +28,20 @@ chrome.commands.onCommand.addListener(async (command) => {
 /**
  * Gets the current active tab URL and opens a new tab with the same URL.
  */
-const duplicateTab = async () => {
+const openGroupedTab = async () => {
   const util = new Util();
   const tab = await util.getActiveTab();
-  chrome.tabs.create({ url: tab.url, active: false });
+
+  chrome.tabs.create({ index: tab.index + 1 }, (newTab) => {
+    chrome.tabs.group({ tabIds: newTab.id, groupId: tab.groupId });
+  });
+};
+
+const createNewGroup = async () => {
+  const util = new Util();
+  const tab = await util.getActiveTab();
+
+  if (tab.groupId === -1) chrome.tabs.group({ tabIds: tab.id });
 };
 
 const notifyAndBookmark = async () => {
@@ -41,15 +51,4 @@ const notifyAndBookmark = async () => {
 
   // Store page
   await PageService.savePage(tab.title, tab.url);
-};
-
-const bookmarkAndClose = async () => {
-  const util = new Util();
-  const tab = await util.getActiveTab();
-
-  // Store page
-  await PageService.savePage(tab.title, tab.url);
-
-  // Close current tab
-  chrome.tabs.remove(tab.id);
 };

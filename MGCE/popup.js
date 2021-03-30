@@ -9,7 +9,7 @@ const displayPages = async () => {
     pageList.appendChild(pageItem);
 
     const pageLink = document.createElement("a");
-    pageLink.title = page.title;
+    pageLink.title = page.url;
     pageLink.innerHTML = page.title;
     pageLink.href = page.url;
 
