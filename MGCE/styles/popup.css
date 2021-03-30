@@ -49,6 +49,9 @@ li {
   justify-content: space-between;
   gap: 15px;
   border-radius: 3px;
+  margin: 1px;
+  padding: 3px;
+  font-family: "Alegreya Sans", sans-serif;
 }
 
 li > div.link {
@@ -62,30 +65,9 @@ li > div.delete-btn {
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 30px;
   width: 11%;
   max-width: 11%;
-}
-
-li,
-a {
-  margin: 1px;
-  padding: 4px;
-  text-decoration: none;
-  font-family: "Alegreya Sans", sans-serif;
-  color: #1c1f20;
-}
-
-a:active {
-  color: white;
-}
-
-a:visited {
-  background-color: #1c1f20;
-}
-
-a:hover {
-  color: #000;
-  cursor: pointer;
 }
 
 li:nth-child(odd) {
@@ -94,6 +76,24 @@ li:nth-child(odd) {
 
 li:nth-child(even) {
   background: #ddbbb9;
+}
+
+a {
+  text-decoration: none;
+  color: #282b2c;
+}
+
+a:active {
+  color: white;
+}
+
+a:visited {
+  background-color: #202324;
+}
+
+a:hover {
+  color: #000;
+  cursor: pointer;
 }
 
 .btn {
@@ -110,6 +110,7 @@ li:nth-child(even) {
   overflow: hidden;
   transition: 0.75s all ease;
 }
+
 .btn:hover {
   cursor: pointer;
   color: #6792a5;
@@ -134,12 +135,6 @@ li:nth-child(even) {
 
 .btn1:hover::before {
   width: 100%;
-}
-
-#help {
-  position: absolute;
-  left: 310px;
-  top: 15px;
 }
 
 .disappear {

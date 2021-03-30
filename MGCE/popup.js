@@ -10,6 +10,7 @@ const displayPages = async () => {
   });
 };
 
+// Create list items for the UI
 const createListItem = (page) => {
   const pageItem = document.createElement("li");
 
@@ -45,8 +46,6 @@ const createListItem = (page) => {
   };
 
   // Displaying the added bookmark in the extension
-  // pageItem.appendChild(pageLink);
-  // pageItem.appendChild(deleteBtn);
   pageItem.appendChild(linkDiv);
   pageItem.appendChild(btnDiv);
   return pageItem;
@@ -71,14 +70,13 @@ input.addEventListener("keyup", () => {
 document.addEventListener("DOMContentLoaded", async () => {
   // Display history.
   await displayPages();
-
-  const clearHistoryBtn = document.getElementById("clear-history");
-  clearHistoryBtn.onclick = async () => {
-    // Commented out for testing purposes of the clear all links confirm window
-    await PageService.clearPages();
-    await displayPages();
-  };
 });
+
+const clearHistoryBtn = document.getElementById("clear-history");
+clearHistoryBtn.onclick = async () => {
+  await PageService.clearPages();
+  await displayPages();
+};
 
 // Add to list in real-time even when the popup window is open
 chrome.storage.sync.onChanged.addListener(async () => {
