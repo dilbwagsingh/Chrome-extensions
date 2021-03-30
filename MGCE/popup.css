@@ -9,7 +9,7 @@
 }
 
 html {
-  margin: 4px;
+  margin: 0 4px;
 }
 
 body {
@@ -26,6 +26,7 @@ body {
 h4 {
   font-family: "Alegreya Sans", sans-serif;
   font-weight: 700;
+  margin-top: 0.5em;
 }
 
 #dog {
@@ -50,7 +51,7 @@ a {
 }
 
 a:active {
-  background-color: #1c1f20;
+  color: white;
 }
 
 a:visited {
@@ -58,10 +59,8 @@ a:visited {
 }
 
 a:hover {
-  /* color: black; */
   font-weight: 500;
   cursor: pointer;
-  /* transition: all 0.4s ease; */
 }
 
 ul li:nth-child(odd) {
@@ -79,7 +78,7 @@ ul li:nth-child(even) {
   font-family: "Alegreya Sans", sans-serif;
   font-weight: 500;
   text-decoration: none;
-  margin: 13px 0px;
+  margin: 10px 0px;
   border-radius: 3px;
   padding: 7px 13px;
   padding-left: 18px;
@@ -113,6 +112,16 @@ ul li:nth-child(even) {
   width: 100%;
 }
 
+#help {
+  position: absolute;
+  left: 310px;
+  top: 15px;
+}
+
+.disappear {
+  display: none;
+}
+
 .search__input {
   width: 340px;
   height: 35px;
@@ -125,7 +134,6 @@ ul li:nth-child(even) {
   color: #ccb8a9;
   border-radius: 3px;
   background: #262f37;
-  /* background: #172735; */
 }
 
 .search__input:focus {

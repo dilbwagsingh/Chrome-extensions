@@ -1,20 +1,20 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Multipurpose Google-Chrome extension",
   "version": "1.0.0",
   "description": "This extension aims to do a lot of small tasks and increase accessibility and usability of google chrome",
-  "browser_action": {
+  "action": {
     "default_popup": "popup.html",
     "default_icon": {
       "64": "images/icon-64.png"
     }
   },
-  "permissions": ["tabs", "storage"],
   "commands": {
-    "_execute_browser_action": {
+    "_execute_action": {
       "suggested_key": {
         "default": "Alt+A"
-      }
+      },
+      "description": "Executes the default action"
     },
     "duplicate-tab": {
       "suggested_key": {
@@ -37,8 +37,7 @@
     }
   },
   "background": {
-    "scripts": ["page.service.js", "background.js", "util.js"],
-    "persistent": false
+    "service_worker": "service-worker.js"
   },
   "content_scripts": [
     {
@@ -47,5 +46,11 @@
       "css": ["content.css"]
     }
   ],
-  "web_accessible_resources": ["./images/icon-48.png"]
+  "web_accessible_resources": [
+    {
+      "matches": ["<all_urls>"],
+      "resources": ["./images/icon-48.png"]
+    }
+  ],
+  "permissions": ["tabs", "storage"]
 }

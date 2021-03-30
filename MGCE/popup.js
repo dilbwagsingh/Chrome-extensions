@@ -39,21 +39,20 @@ const displayPages = async () => {
   });
 };
 
+// Implementing search-bar functionality
 const input = document.getElementById("input");
 input.addEventListener("keyup", () => {
-  let filter = input.value.trim().toUpperCase();
-  let itemList = document
-    .getElementById("page-list")
-    .getElementsByTagName("li");
+  const filter = input.value.trim().toLowerCase();
+  const itemList = document.querySelectorAll("li");
 
-  for (let i = 0; i < itemList.length; i++) {
-    let txtValue = itemList[i].textContent || itemList[i].innerText;
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      itemList[i].style.display = "";
+  itemList.forEach((item) => {
+    const txtValue = item.textContent || item.innerText;
+    if (txtValue.toLowerCase().indexOf(filter) < 0) {
+      item.classList.add("disappear");
     } else {
-      itemList[i].style.display = "none";
+      item.classList.remove("disappear");
     }
-  }
+  });
 });
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -62,7 +61,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const clearHistoryBtn = document.getElementById("clear-history");
   clearHistoryBtn.onclick = async () => {
-    await PageService.clearPages();
+    // await PageService.clearPages();
     await displayPages();
   };
 });

@@ -1,3 +1,5 @@
+importScripts("util.js", "page.service.js");
+
 chrome.commands.onCommand.addListener(async (command) => {
   switch (command) {
     case "duplicate-tab":
