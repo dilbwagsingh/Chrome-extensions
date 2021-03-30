@@ -61,6 +61,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const clearHistoryBtn = document.getElementById("clear-history");
   clearHistoryBtn.onclick = async () => {
+    // Commented out for testing purposes of the clear all links confirm window
     // await PageService.clearPages();
     await displayPages();
   };

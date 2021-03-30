@@ -78,17 +78,11 @@ class PageService {
   };
 
   static clearPage = async (pageTitle) => {
-    // The chrome remove API is not working for some reason (debug later)
-    // const pages = await this.getPages();
-    // pages.forEach((page) => {
-    //   console.log(page);
-    // });
-
+    // This commented out code would delete the whole database of links stored as an array under the key PAGES_KEY in the chrome sync storage. In my current architechture this cannot be used to clear individual pages but i am planning to use this once i start using the chrome tabGroups API.
     // const promise = new Promise((resolve, reject) => {
     //   try {
-    //     chrome.storage.sync.remove(pageTitle, () => {
+    //     chrome.storage.sync.remove(PAGES_KEY, () => {
     //       if (chrome.runtime.lastError) reject(chrome.runtime.lastError);
-
     //       console.log(pageTitle);
     //       resolve();
     //     });
@@ -97,18 +91,10 @@ class PageService {
     //     reject(err);
     //   }
     // });
-
     // return promise;
 
-    // Temporary fix (slow in performance)
     const pages = await this.getPages();
-    const newPages = [];
-    pages.forEach((page) => {
-      if (page.title !== pageTitle) {
-        newPages.push(page);
-      }
-    });
-
+    const newPages = pages.filter((page) => page.title !== pageTitle);
     const promise = new Promise((resolve, reject) => {
       try {
         this.clearPages();
@@ -120,7 +106,6 @@ class PageService {
         reject(err);
       }
     });
-
     return promise;
   };
 }
