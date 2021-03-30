@@ -51,23 +51,24 @@ li {
 }
 
 li > div.link {
+  display: flex;
+  align-items: center;
   width: 87%;
   max-width: 87%;
 }
 
 li > div.delete-btn {
   display: flex;
-  width: 13%;
-  max-width: 13%;
   align-items: center;
   justify-content: center;
+  width: 13%;
+  max-width: 13%;
 }
 
 li,
 a {
   margin: 1px;
   padding: 4px;
-  text-indent: -5px;
   text-decoration: none;
   font-family: "Alegreya Sans", sans-serif;
   color: #1c1f20;
