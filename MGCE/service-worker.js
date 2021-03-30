@@ -1,4 +1,13 @@
-importScripts("util.js", "page.service.js");
+importScripts("./helpers/util.js", "./helpers/page.service.js");
+
+// Asking user to access all urls at the time of install
+chrome.runtime.onStartup.addListener((r) => {
+  if (r.reason === "install") {
+    chrome.permissions.request({
+      origins: ["<all_urls>"],
+    });
+  }
+});
 
 chrome.commands.onCommand.addListener(async (command) => {
   switch (command) {

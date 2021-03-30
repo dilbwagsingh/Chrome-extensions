@@ -42,8 +42,8 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["content.js", "util.js"],
-      "css": ["content.css"]
+      "js": ["content.js", "./helpers/util.js"],
+      "css": ["./styles/content.css"]
     }
   ],
   "web_accessible_resources": [
@@ -52,5 +52,6 @@
       "resources": ["./images/icon-48.png"]
     }
   ],
-  "permissions": ["tabs", "storage"]
+  "permissions": ["tabs", "storage"],
+  "host_permissions": ["<all_urls>"]
 }
