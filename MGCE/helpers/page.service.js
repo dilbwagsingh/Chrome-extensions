@@ -42,7 +42,7 @@ class PageService {
     if (!urlAlreadyPresent && !titleAlreadyPresent) {
       updatedPages.push({ title, url });
     } else if (!urlAlreadyPresent && titleAlreadyPresent) {
-      title += "_";
+      title += "__INTERNAL";
       updatedPages.push({ title, url });
     }
 

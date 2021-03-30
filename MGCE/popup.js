@@ -5,38 +5,51 @@ const displayPages = async () => {
   pageList.innerHTML = "";
 
   visitedPages.forEach((page) => {
-    const pageItem = document.createElement("li");
-    pageList.appendChild(pageItem);
-
-    const pageLink = document.createElement("a");
-    pageLink.title = page.url;
-    pageLink.innerHTML = page.title;
-    pageLink.href = page.url;
-
-    // Delete individual items from the list
-    const deleteBtn = document.createElement("a");
-    deleteBtn.innerHTML =
-      '<img src="./images/icon-delete.png" width=16px height=16px/>';
-    deleteBtn.className = "del-btn";
-    deleteBtn.addEventListener(
-      "click",
-      function (event) {
-        PageService.clearPage(page.title);
-      },
-      false
-    );
-
-    // Prevent the link from opening in the extension pop-up
-    pageLink.onclick = (event) => {
-      event.preventDefault();
-      chrome.tabs.create({ url: event.target.href, active: false });
-    };
-
-    // Displaying the added bookmark in the extension
-    pageItem.appendChild(pageLink);
-    pageItem.appendChild(deleteBtn);
+    pageItem = createListItem(page);
     pageList.appendChild(pageItem);
   });
+};
+
+const createListItem = (page) => {
+  const pageItem = document.createElement("li");
+
+  const linkDiv = document.createElement("div");
+  const btnDiv = document.createElement("div");
+  linkDiv.className = "link";
+  btnDiv.className = "delete-btn";
+
+  const pageLink = document.createElement("a");
+  pageLink.title = page.url;
+  pageLink.innerHTML = page.title;
+  pageLink.href = page.url;
+
+  const deleteBtn = document.createElement("a");
+  deleteBtn.innerHTML = '<img src="./images/icon-delete.png"/>';
+  deleteBtn.className = "del-btn";
+
+  linkDiv.appendChild(pageLink);
+  btnDiv.appendChild(deleteBtn);
+
+  deleteBtn.addEventListener(
+    "click",
+    function (event) {
+      PageService.clearPage(page.title);
+    },
+    false
+  );
+
+  // Prevent the link from opening in the extension pop-up
+  pageLink.onclick = (event) => {
+    event.preventDefault();
+    chrome.tabs.create({ url: event.target.href, active: false });
+  };
+
+  // Displaying the added bookmark in the extension
+  // pageItem.appendChild(pageLink);
+  // pageItem.appendChild(deleteBtn);
+  pageItem.appendChild(linkDiv);
+  pageItem.appendChild(btnDiv);
+  return pageItem;
 };
 
 // Implementing search-bar functionality
@@ -62,7 +75,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const clearHistoryBtn = document.getElementById("clear-history");
   clearHistoryBtn.onclick = async () => {
     // Commented out for testing purposes of the clear all links confirm window
-    // await PageService.clearPages();
+    await PageService.clearPages();
     await displayPages();
   };
 });

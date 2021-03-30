@@ -36,8 +36,31 @@ h4 {
 }
 
 ul {
+  align-self: flex-start;
   list-style: none;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+li {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  word-wrap: break-word;
+}
+
+li > div.link {
+  width: 87%;
+  max-width: 87%;
+}
+
+li > div.delete-btn {
+  display: flex;
+  width: 13%;
+  max-width: 13%;
+  align-items: center;
+  justify-content: center;
 }
 
 li,
@@ -59,15 +82,15 @@ a:visited {
 }
 
 a:hover {
-  font-weight: 500;
+  color: #000;
   cursor: pointer;
 }
 
-ul li:nth-child(odd) {
+li:nth-child(odd) {
   background: #c0b0b7;
 }
 
-ul li:nth-child(even) {
+li:nth-child(even) {
   background: #ddbbb9;
 }
 
