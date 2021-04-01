@@ -54,12 +54,12 @@ const createListItem = (page) => {
 // Implementing search-bar functionality
 const input = document.getElementById("input");
 input.addEventListener("keyup", () => {
-  const filter = input.value.trim().toLowerCase();
+  const filter = input.value.trim().toUpperCase();
   const itemList = document.querySelectorAll("li");
 
   itemList.forEach((item) => {
     const txtValue = item.textContent || item.innerText;
-    if (txtValue.toLowerCase().indexOf(filter) < 0) {
+    if (txtValue.toUpperCase().indexOf(filter) < 0) {
       item.classList.add("disappear");
     } else {
       item.classList.remove("disappear");
