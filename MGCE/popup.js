@@ -10,6 +10,24 @@ const displayPages = async () => {
   });
 };
 
+const search = () => {
+  const input = document.getElementById("input");
+  const filter = input.value.trim().toUpperCase();
+  const itemList = document.querySelectorAll("li");
+
+  itemList.forEach((item) => {
+    const txtValue = item.textContent || item.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) < 0) {
+      item.classList.add("disappear");
+    } else {
+      item.classList.remove("disappear");
+    }
+  });
+};
+
+// Implementing search-bar functionality
+input.addEventListener("keyup", search);
+
 // Create list items for the UI
 const createListItem = (page) => {
   const pageItem = document.createElement("li");
@@ -50,22 +68,6 @@ const createListItem = (page) => {
   pageItem.appendChild(btnDiv);
   return pageItem;
 };
-
-// Implementing search-bar functionality
-const input = document.getElementById("input");
-input.addEventListener("keyup", () => {
-  const filter = input.value.trim().toUpperCase();
-  const itemList = document.querySelectorAll("li");
-
-  itemList.forEach((item) => {
-    const txtValue = item.textContent || item.innerText;
-    if (txtValue.toUpperCase().indexOf(filter) < 0) {
-      item.classList.add("disappear");
-    } else {
-      item.classList.remove("disappear");
-    }
-  });
-});
 
 document.addEventListener("DOMContentLoaded", async () => {
   // Display history.
